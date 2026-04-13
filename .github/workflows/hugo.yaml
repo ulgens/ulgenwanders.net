@@ -1,0 +1,119 @@
+name: Build and deploy
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+  workflow_dispatch:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: false
+
+defaults:
+  run:
+    shell: bash
+
+permissions: {}
+
+jobs:
+  build:
+    name: Build the site
+    permissions:
+      contents: read
+      pages: read  # to get the base URL for the build
+    runs-on: ubuntu-24.04
+    env:
+      # renovate: datasource=github-releases depName=casey/just
+      JUST_VERSION: 1.49.0
+      # renovate: datasource=python-version depName=python
+      PYTHON_VERSION: 3.14.4
+      # renovate: datasource=pypi depName=uv
+      UV_VERSION: 0.11.6
+      TZ: Europe/Oslo
+    timeout-minutes: 1
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd  # v6.0.2
+        with:
+          submodules: recursive
+          persist-credentials: false
+
+      - name: Setup Pages
+        id: pages
+        uses: actions/configure-pages@45bfe0192ca1faeb007ade9deae92b16b8254a0d  # v6.0.0
+
+      - name: Install just ${{ env.JUST_VERSION }}
+        uses: extractions/setup-just@53165ef7e734c5c07cb06b3c8e7b647c5aa16db3  # v4.0.0
+        with:
+          just-version: ${{ env.JUST_VERSION }}
+
+      - name: Install uv ${{ env.UV_VERSION }} & Python ${{ env.PYTHON_VERSION }}
+        uses: astral-sh/setup-uv@cec208311dfd045dd5311c1add060b2062131d57  # v8.0.0
+        with:
+          enable-cache: true
+          python-version: ${{ env.PYTHON_VERSION }}
+          version: ${{ env.UV_VERSION }}
+
+      - name: Install packages
+        run: uv sync --frozen --no-install-project
+
+      - name: Configure Git
+        run: git config core.quotepath false
+
+      # Can't access runner.temp in job-level env, so set it up in a step and pass it via outputs.
+      - name: Set up Hugo cache directory
+        id: setup-cache
+        env:
+          HUGO_CACHE_DIR: ${{ runner.temp }}/hugo_cache
+        run: echo "hugo_cache_dir=${HUGO_CACHE_DIR}" >> $GITHUB_OUTPUT
+
+      - name: Cache restore
+        id: cache-restore
+        uses: actions/cache/restore@668228422ae6a00e4ad889ee87cd7109ec5666a7  # v5.0.4
+        with:
+          path: ${{ steps.setup-cache.outputs.hugo_cache_dir }}
+          key: hugo-${{ runner.os }}-${{ hashFiles('**/uv.lock', 'hugo.yml') }}
+          restore-keys: hugo-${{ runner.os }}-
+
+      - name: Build the site
+        env:
+          BASE_URL: ${{ steps.pages.outputs.base_url }}/
+          CACHE_DIR: ${{ steps.setup-cache.outputs.hugo_cache_dir }}
+        run: |
+          just build \
+            --baseURL "${BASE_URL}" \
+            --cacheDir "${CACHE_DIR}"
+
+      - name: Cache save
+        id: cache-save
+        uses: actions/cache/save@668228422ae6a00e4ad889ee87cd7109ec5666a7  # v5.0.4
+        with:
+          path: ${{ steps.setup-cache.outputs.hugo_cache_dir }}
+          key: ${{ steps.cache-restore.outputs.cache-primary-key }}
+
+      - name: Upload artifact
+        if: github.ref == 'refs/heads/main'  # Upload artifact only from the main branch
+        uses: actions/upload-pages-artifact@fc324d3547104276b827a68afc52ff2a11cc49c9  # v5.0.0
+        with:
+          path: ./public
+
+  deploy:
+    name: Deploy to GitHub Pages
+    if: github.ref == 'refs/heads/main'  # Deploy only from the main branch
+    permissions:
+      pages: write  # to deploy to Pages
+      id-token: write  # to verify the deployment originates from an appropriate source
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-24.04
+    timeout-minutes: 1
+    needs: build
+
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@cd2ce8fcbc39b97be8ca5fce6e763baed58fa128  # v5.0.0

@@ -1,0 +1,19 @@
+[project]
+name = "ulgenwanders-net"
+version = "0.1.0"
+readme = "README.md"
+requires-python = ">=3.14"
+classifiers = [
+    "Programming Language :: Python :: 3 :: Only",
+    "Programming Language :: Python :: 3.14",
+]
+dependencies = [
+    "hugo==0.160.0",
+]
+urls.Homepage = "https://ulgenwanders.net"
+urls.Repository = "https://github.com/ulgens/ulgenwanders.net"
+
+[tool.pyproject-fmt]
+indent = 4
+keep_full_version = true
+max_supported_python = "3.14"

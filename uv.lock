@@ -1,0 +1,31 @@
+version = 1
+revision = 3
+requires-python = ">=3.14"
+
+[[package]]
+name = "hugo"
+version = "0.160.0"
+source = { registry = "https://pypi.org/simple" }
+sdist = { url = "https://files.pythonhosted.org/packages/1f/97/9c5942e6c3ab6bc902cee28a0711e53a5f0d738c34fd2db9bf10a2384e1c/hugo-0.160.0.tar.gz", hash = "sha256:485cd16948a40aeefea7dabf78f2d22446275392999220eb22b098d61a4d7bce", size = 4679775, upload-time = "2026-04-06T08:46:48.146Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/e7/25/853f418f99c632c9513b7c1a35a94539deb95386415598a1758f721eff1f/hugo-0.160.0-py3-none-macosx_10_13_x86_64.whl", hash = "sha256:08379c4dd67fe3c1290ed364ca70e70f1ab342d0456ec3b58d98f9f06bdaec21", size = 27817135, upload-time = "2026-04-06T08:33:37.382Z" },
+    { url = "https://files.pythonhosted.org/packages/8d/8b/61ddfae39156273b099f35b2522f428aceaf69fa58d95cd24c3216369987/hugo-0.160.0-py3-none-macosx_11_0_arm64.whl", hash = "sha256:1defdf070073e18d0706a0f6f738375b9f18217c6baad23c51fa3e90dc1afcb2", size = 25899685, upload-time = "2026-04-06T08:33:40.951Z" },
+    { url = "https://files.pythonhosted.org/packages/3e/bd/b7292e98a2d3b5d0325b1fac46f819d391fba13242046630f94365b1f200/hugo-0.160.0-py3-none-manylinux_2_24_aarch64.manylinux_2_28_aarch64.whl", hash = "sha256:afda3da212846930478fd8183f8e0122ecfa68e8643f867540709042217e1cfc", size = 25160063, upload-time = "2026-04-06T08:33:44.452Z" },
+    { url = "https://files.pythonhosted.org/packages/54/d4/7aed54e267909730def79584f2c8e71c9f09e899680ae91635210542acb5/hugo-0.160.0-py3-none-manylinux_2_24_ppc64le.manylinux_2_28_ppc64le.whl", hash = "sha256:b7764fcedbac9df6f268b8ceac0ec0c3004383e791fec62ae9b3a35923defd01", size = 25013963, upload-time = "2026-04-06T08:33:47.858Z" },
+    { url = "https://files.pythonhosted.org/packages/76/bc/a46b1f293631a7398e36fd352e04c607244382f10d4abff278a48f414947/hugo-0.160.0-py3-none-manylinux_2_24_s390x.manylinux_2_28_s390x.whl", hash = "sha256:68168135574e5bf7dbc01c5b1602f7dd09a171898ba1742b8f10525ce5d3ea84", size = 27154015, upload-time = "2026-04-06T08:33:51.621Z" },
+    { url = "https://files.pythonhosted.org/packages/73/d3/e7d811ddee0ac1a99a8256b699b09cda4dcac9199e7948953512d9576321/hugo-0.160.0-py3-none-manylinux_2_24_x86_64.manylinux_2_28_x86_64.whl", hash = "sha256:587b8ca42c9c96e2420e18a6256278accdd29f91edbc1173443eb5eb961ac70d", size = 27747683, upload-time = "2026-04-06T08:33:55.505Z" },
+    { url = "https://files.pythonhosted.org/packages/4c/55/1c59fc1be9275690b0a24966c4dd09bdc9636442f9dca454f41c91f4a3b8/hugo-0.160.0-py3-none-win32.whl", hash = "sha256:516525604665a1581b44c2418777e9fec4263901710f085f8ad5d5301ceee5b8", size = 26782120, upload-time = "2026-04-06T08:33:58.863Z" },
+    { url = "https://files.pythonhosted.org/packages/5a/8b/3c099d760b5c540e8919913d23745f32527143479222cd13743e7a99dac9/hugo-0.160.0-py3-none-win_amd64.whl", hash = "sha256:792c2aee401fdf8d570e22eef66007047b500ea41ab06f92386418b2823c91aa", size = 28639166, upload-time = "2026-04-06T08:34:02.404Z" },
+    { url = "https://files.pythonhosted.org/packages/04/67/9487cd752b22d846cd95e30efc4538038d968381bf051d663da99f5fddf8/hugo-0.160.0-py3-none-win_arm64.whl", hash = "sha256:e4250fcb1829abcaef1a8734ee4af9195dd2609992740e976bab9fca908f7792", size = 25499680, upload-time = "2026-04-06T08:46:45.633Z" },
+]
+
+[[package]]
+name = "ulgenwanders-net"
+version = "0.1.0"
+source = { virtual = "." }
+dependencies = [
+    { name = "hugo" },
+]
+
+[package.metadata]
+requires-dist = [{ name = "hugo", specifier = "==0.160.0" }]
