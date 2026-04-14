@@ -8,7 +8,7 @@ classifiers = [
     "Programming Language :: Python :: 3.14",
 ]
 dependencies = [
-    "hugo==0.160.0",
+    "hugo==0.160.1",
 ]
 urls.Homepage = "https://ulgenwanders.net"
 urls.Repository = "https://github.com/ulgens/ulgenwanders.net"
