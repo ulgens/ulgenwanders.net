@@ -1,0 +1,8 @@
+rules:
+  # https://docs.zizmor.sh/audits/#secrets-outside-env
+  # The project doesn't have to plan multiple environments for now.
+  # TODO: Revisit the decision here.
+  secrets-outside-env:
+    ignore:
+      - hugo.yaml:108:26
+      - hugo.yaml:109:25
