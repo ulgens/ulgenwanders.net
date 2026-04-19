@@ -1,0 +1,28 @@
+disabled = false
+locale = "en"
+label = "English"
+weight = 1
+title = "Frolicking Notes"
+
+[params]
+  displayName = "EN"
+  isoCode = "en"
+  rtl = false
+  dateFormat = "2 January 2006"
+  # logo = "img/logo.png"
+  # secondaryLogo = "img/secondary-logo.png"
+  # description = "My awesome website"
+  # copyright = "Copy, _right?_ :thinking_face:"
+
+[params.author]
+  name = "Ülgen Sarıkavak"
+  email = "hey@ulgenwanders.net"
+# image = "img/blowfish_logo.png"
+# imageQuality = 96
+  headline = "Senior Software Developer & Creative Technologist"
+# bio = "A little bit about you"
+  links = [
+    { github = "https://github.com/ulgens" },
+    { linkedin = "https://linkedin.com/in/ulgens" },
+    { email = "mailto:hey@ulgenwanders.net" },
+  ]
