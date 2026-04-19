@@ -1,0 +1,29 @@
+# -- Markup --
+# These settings are required for the theme to function.
+
+[goldmark]
+  [goldmark.parser]
+    wrapStandAloneImageWithinParagraph = false
+
+    [goldmark.parser.attribute]
+      block = true
+
+  [goldmark.renderer]
+    # FIXME:
+    #   Potential safety issue
+    #   https://github.com/ulgens/ulgenwanders.net/pull/10#discussion_r3107027021
+    unsafe = true
+
+  [goldmark.extensions]
+    [goldmark.extensions.passthrough]
+      enable = true
+      [goldmark.extensions.passthrough.delimiters]
+        block = [['\[', '\]'], ['$$', '$$']]
+        inline = [['\(', '\)']]
+
+[highlight]
+  noClasses = false
+
+[tableOfContents]
+  startLevel = 2
+  endLevel = 4

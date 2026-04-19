@@ -11,7 +11,8 @@ git submodule update --init --recursive # needed when you reclone your repo (sub
 https://github.com/adityatelange/hugo-PaperMod/wiki/Installation#installingupdating-papermod
 
 # To Do
-- [ ] Pin "FOSS report" post: https://github.com/adityatelange/hugo-PaperMod/wiki/FAQs#pin-a-post
-- [ ] Add favicon: https://github.com/adityatelange/hugo-PaperMod/wiki/FAQs#adding-custom-favicons
-- [ ] Revisit the commented-out config options in `hugo.yml`
+- [ ] Pin "FOSS report" post
+- [ ] Add favicon
 - [ ] Add a custom 404 page
+- [ ] Follow https://n9o.xyz/posts/202310-blowfish-tutorial/
+  - [ ] Check how to adapt the visual niceties
