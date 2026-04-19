@@ -31,7 +31,7 @@ jobs:
       # renovate: datasource=python-version depName=python
       PYTHON_VERSION: 3.14.4
       # renovate: datasource=pypi depName=uv
-      UV_VERSION: 0.11.6
+      UV_VERSION: 0.11.7
       TZ: Europe/Oslo
     timeout-minutes: 1
 
