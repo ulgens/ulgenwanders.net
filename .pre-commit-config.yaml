@@ -22,7 +22,7 @@ repos:
       - id: uv-lock
 
   - repo: https://github.com/instrumentl/pre-commit-just
-    rev: v0.1
+    rev: v0.2
     hooks:
       - id: format-justfile
 
@@ -32,7 +32,7 @@ repos:
       - id: yamlfmt
 
   - repo: https://github.com/python-jsonschema/check-jsonschema
-    rev: 0.37.1
+    rev: 0.38.0
     hooks:
       - id: check-github-workflows
       - id: check-jsonschema
@@ -47,12 +47,12 @@ repos:
           - pyjson5==2.0.0
 
   - repo: https://github.com/zizmorcore/zizmor-pre-commit
-    rev: v1.24.1
+    rev: v1.29.0
     hooks:
       - id: zizmor
         args: ["--no-progress", "--persona=auditor"]
 
   - repo: https://github.com/codespell-project/codespell
-    rev: v2.4.2
+    rev: v2.4.3
     hooks:
       - id: codespell
