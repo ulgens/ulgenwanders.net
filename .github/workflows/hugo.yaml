@@ -87,7 +87,7 @@ jobs:
     env:
       CF_PROJECT_NAME: ulgenwanders-net
       # renovate: datasource=npm depName=wrangler
-      WRANGLER_VERSION: 4.123.0
+      WRANGLER_VERSION: 4.124.0
     timeout-minutes: 1
     needs: build
 
