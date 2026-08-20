@@ -48,7 +48,7 @@ jobs:
           just-version: ${{ env.JUST_VERSION }}
 
       - name: Install uv ${{ env.UV_VERSION }} & Python ${{ env.PYTHON_VERSION }}
-        uses: astral-sh/setup-uv@cec208311dfd045dd5311c1add060b2062131d57  # v8.0.0
+        uses: astral-sh/setup-uv@20cfd1bf945f4377ade1205e4dbc17946fc9a30d  # v10.0.1
         with:
           # TODO: Do we have any environmental concerns about disabling the caching?
           enable-cache: false
