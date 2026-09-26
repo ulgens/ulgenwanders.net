@@ -31,7 +31,7 @@ jobs:
       # renovate: datasource=python-version depName=python
       PYTHON_VERSION: 3.14.7
       # renovate: datasource=pypi depName=uv
-      UV_VERSION: 0.12.5
+      UV_VERSION: 0.12.18
       TZ: Europe/Oslo
     timeout-minutes: 1
 
@@ -48,7 +48,7 @@ jobs:
           just-version: ${{ env.JUST_VERSION }}
 
       - name: Install uv ${{ env.UV_VERSION }} & Python ${{ env.PYTHON_VERSION }}
-        uses: astral-sh/setup-uv@20cfd1bf945f4377ade1205e4dbc17946fc9a30d  # v10.0.1
+        uses: astral-sh/setup-uv@c18668ad3cf93ea998bef934396af7bb5c839dc7  # v10.2.0
         with:
           # TODO: Do we have any environmental concerns about disabling the caching?
           enable-cache: false
